@@ -138,18 +138,15 @@
 
 
 
-<meta name="description" content="浏览器保存数据有三种方式：localStorage、sessionStorage、cookie，与服务器端的session相区别，它们有相同点，也有不同点。本篇博客对三种方式的作用及用法进行总结。">
 <meta name="keywords" content="AHRL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="localStorage、sessionStorage和cookie.md">
-<meta property="og:url" content="http://ahrler.xyz/2018/04/25/localStorage、sessionStorage和cookie-md/index.html">
+<meta property="og:title" content="预加载与懒加载问题.md">
+<meta property="og:url" content="http://ahrler.xyz/2018/04/25/预加载与懒加载问题-md/index.html">
 <meta property="og:site_name" content="AHRL">
-<meta property="og:description" content="浏览器保存数据有三种方式：localStorage、sessionStorage、cookie，与服务器端的session相区别，它们有相同点，也有不同点。本篇博客对三种方式的作用及用法进行总结。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-25T11:45:01.925Z">
+<meta property="og:updated_time" content="2018-04-25T12:54:14.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="localStorage、sessionStorage和cookie.md">
-<meta name="twitter:description" content="浏览器保存数据有三种方式：localStorage、sessionStorage、cookie，与服务器端的session相区别，它们有相同点，也有不同点。本篇博客对三种方式的作用及用法进行总结。">
+<meta name="twitter:title" content="预加载与懒加载问题.md">
 
 
 
@@ -179,13 +176,13 @@
 
 
 
-  <link rel="canonical" href="http://ahrler.xyz/2018/04/25/localStorage、sessionStorage和cookie-md/"/>
+  <link rel="canonical" href="http://ahrler.xyz/2018/04/25/预加载与懒加载问题-md/"/>
 
 
 
 
 
-  <title>localStorage、sessionStorage和cookie.md | AHRL</title>
+  <title>预加载与懒加载问题.md | AHRL</title>
   <style>
   .forkme{
  display: none;
@@ -313,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ahrler.xyz/2018/04/25/localStorage、sessionStorage和cookie-md/">
+    <link itemprop="mainEntityOfPage" href="http://ahrler.xyz/2018/04/25/预加载与懒加载问题-md/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AHRL">
@@ -330,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">localStorage、sessionStorage和cookie.md</h1>
+          <h1 class="post-title" itemprop="name headline">预加载与懒加载问题.md</h1>
         
 
         <div class="post-meta">
@@ -342,7 +339,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-25T19:44:21+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-25T20:53:55+08:00">
                 2018-04-25
               </time>
             
@@ -374,7 +371,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,071
+                  0
                 </span>
               
 
@@ -390,7 +387,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  1
                 </span>
               
             </div>
@@ -411,40 +408,7 @@
       
 
       
-        <p>浏览器保存数据有三种方式：localStorage、sessionStorage、cookie，与服务器端的session相区别，它们有相同点，也有不同点。本篇博客对三种方式的作用及用法进行总结。</p>
-<a id="more"></a>
-<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
-<li>localStorage</li>
-<li>sessionStorage</li>
-<li>cookie</li>
-</ul>
-<h4 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h4><p>localStrorage是本地储存，也是永久储存,没有方法可以设置它的存在时效，只能手动删除数据，它改变了以前只能用cookie的局限性，扩大了数据存储量。在一般浏览器中支持的是5M大小，不同的浏览器会有所不同。<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存储数据</span></span><br><span class="line"><span class="comment">//三种写法：key = "value"</span></span><br><span class="line">localStorage[<span class="string">"key"</span>] = <span class="string">"value"</span>;<span class="comment">//第一种</span></span><br><span class="line">localStorage.key = <span class="string">"value"</span>;<span class="comment">//第二种</span></span><br><span class="line">localStorage.setItem(<span class="string">"key"</span>,<span class="string">"value"</span>);<span class="comment">//第三种(推荐)</span></span><br><span class="line"><span class="comment">//获取数据：三种方式同上</span></span><br><span class="line">localStorage.[<span class="string">"key"</span>];</span><br><span class="line">localStorage.key;</span><br><span class="line">localStorage.getItem(<span class="string">"key"</span>);<span class="comment">//获取名为key的值</span></span><br><span class="line"><span class="comment">//删除单个指定数据</span></span><br><span class="line">localStorage.removeItem(<span class="string">"key"</span>);</span><br><span class="line"><span class="comment">//删除全部数据</span></span><br><span class="line">localStorage.clear();</span><br><span class="line"><span class="comment">//遍历localStorage的数据</span></span><br><span class="line"><span class="keyword">var</span> storage = <span class="built_in">window</span>.localStorage;<span class="comment">//获取localStorage对象</span></span><br><span class="line"><span class="keyword">var</span> len = storage.length;</span><br><span class="line"><span class="keyword">if</span>(len == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">"没有缓存数据"</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; len;i ++)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(storage.key(i));<span class="comment">//打印名称，key()方法必须要传一个参数。</span></span><br><span class="line">    <span class="built_in">console</span>.log(storage.getItem(storage.key(i)));<span class="comment">//打印该名称对应的值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>localStorage的局限：<br></p>
-<ol>
-<li>浏览器兼容性问题：IE浏览器只有IE8以上的版本才支持localStorage;</li>
-<li>localStorage本质上是对字符串的读取(只支持string类型的存储，即使存储进去的是number类型，打印出来的也是string类型)，如果存储内容过多的话会消耗内存空间，会导致页面变卡。</li>
-<li>localStorage不能被爬虫抓取到。</li>
-</ol>
-<ul>
-<li>IE浏览器下的存储UserData<blockquote>
-<p>刚刚提到在IE浏览器下只有IE8以上的版本才支持localStorage，而IE8以下的版本可以通过IE专门的存储方式UserData；UserData存储通过将数据写入一个UserData存储区以XML格式来保存数据，作用类似与localStorage，即使IE浏览器关闭或刷新，下次开启数据依然存在。UserData行为提供了一个比Cookie更具有动态性和更大容量的数据结构。每页的UserData存储区数据大小可以达到64Kb，每个域名可以达到640Kb。UserData行为通过sessions为每个对象分配UserData存储区。使用save和load方法将UserData存储区数据保存在缓存（cache）中。如果需要兼容所有版本浏览器，可以使用UserData。<br><br><br></p>
-</blockquote>
-</li>
-<li>localStorage遵循同源策略，所谓同源政策指的是协议相同，域名相同，端口相同。所以在不同的网站是不能共用相同的localStorage。sessionStorage和cookie也是。<br><br><h4 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h4>sessionStorage是临时存储，当页面关闭时，保存在sessionStorage里面的值就会销毁。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存储数据</span></span><br><span class="line">sessionStorage[<span class="string">"key"</span>] = <span class="string">"value"</span>;</span><br><span class="line">sessionStorage.key = <span class="string">"value"</span>;</span><br><span class="line">sessionStorage.setItem(<span class="string">"key"</span>);</span><br><span class="line"><span class="comment">//获取数据</span></span><br><span class="line">sessionStorage[<span class="string">"key"</span>] = <span class="string">"value"</span>;</span><br><span class="line">sessionStorage.key = <span class="string">"value"</span>;</span><br><span class="line">sessionStorage.getItem(<span class="string">"key"</span>) = <span class="string">"value"</span>;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>sessionStorage的特点</p>
-<ol>
-<li>单标签页限制，sessionStorage操作限制在单个标签页中，在此标签页进行同源也访问都可以进行共享sessionStorage数据。因此sessionStorage非常适合单页应用程序，可以方便在业务模块进行传值。</li>
-<li>临时储存，在页面关闭后sessionStorage里的数据就会消失，若使用Chrome的恢复标签页功能，sessionStorage的数据也会回复。</li>
-<li>不同的浏览器存储的上限不一样，但大多数浏览器把上限限制在5M以下。<br><br><h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4>cookie分为会话cookie和持久cookie两种：<br></li>
-</ol>
-<ul>
-<li>会话cookie是存在于用户浏览该网站的临时存储器中，当用户关闭浏览器时，浏览器通常会删除会话cookie。</li>
-<li>持久cookie是指在cookie里可以设置到期时间，当时间到时，cookie的数据才会消失，因此可以使用cookie来记录用户长时间浏览网页的习惯，记住密码等。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置cookie</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setCookie</span>(<span class="params">key, value, iDay</span>) </span>&#123;<span class="comment">//iDay设置过期时间</span></span><br><span class="line">        <span class="keyword">var</span> oDate = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">        oDate.setDate(oDate.getDate() + iDay);</span><br><span class="line">        <span class="built_in">document</span>.cookie = key + <span class="string">'='</span> + value + <span class="string">';expires='</span> + oDate;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">document</span>.cookie);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//删除cookie</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeCookie</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    setCookie(key, <span class="string">''</span>, <span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//获得cookie</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookie</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'all'</span> + <span class="built_in">document</span>.cookie);</span><br><span class="line">    <span class="keyword">var</span> cookieArr = <span class="built_in">document</span>.cookie.split(<span class="string">';'</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; cookieArr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> arr = cookieArr[i].split(<span class="string">'='</span>);</span><br><span class="line">        <span class="keyword">if</span> (arr[<span class="number">0</span>] === key) &#123;</span><br><span class="line">            <span class="keyword">return</span> arr[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
+        
       
     </div>
     
@@ -480,8 +444,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/05/ajax/" rel="next" title="ajax">
-                <i class="fa fa-chevron-left"></i> ajax
+              <a href="/2018/04/25/localStorage、sessionStorage和cookie-md/" rel="next" title="localStorage、sessionStorage和cookie.md">
+                <i class="fa fa-chevron-left"></i> localStorage、sessionStorage和cookie.md
               </a>
             
           </div>
@@ -489,10 +453,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/25/预加载与懒加载问题-md/" rel="prev" title="预加载与懒加载问题.md">
-                预加载与懒加载问题.md <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
