@@ -146,7 +146,7 @@
 <meta property="og:site_name" content="AHRL">
 <meta property="og:description" content="AJAX即“Asynchronous Javascript And XML”（异步JavaScript和XML）。在没有Ajax之前，想要刷新就只能整个页面刷新，有了ajax以后，可以将特定的位置刷新，实现局部刷新。也就是说，ajax可以单独请求数据，并对获取的数据进行操作。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-19T11:45:46.654Z">
+<meta property="og:updated_time" content="2018-04-26T01:32:29.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ajax">
 <meta name="twitter:description" content="AJAX即“Asynchronous Javascript And XML”（异步JavaScript和XML）。在没有Ajax之前，想要刷新就只能整个页面刷新，有了ajax以后，可以将特定的位置刷新，实现局部刷新。也就是说，ajax可以单独请求数据，并对获取的数据进行操作。">
@@ -470,7 +470,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">状态码：由<span class="number">3</span>位数字和文字构成，用来说明请求是成功还是失败。</span><br><span class="line"><span class="number">1</span>xx：   信息类，表示收到浏览器请求，正在进一步处理中</span><br><span class="line"><span class="number">2</span>xx：   已成功，用户请求被正确接收、理解和处理，如<span class="number">200</span> OK</span><br><span class="line"><span class="number">3</span>xx：   重定向，请求失败，客户必须采取进一步的动作</span><br><span class="line"><span class="number">4</span>xx：   客户端错误，客户端提交的请求有错误，如<span class="number">404</span>页面：资源不存在</span><br><span class="line"><span class="number">5</span>xx：   服务器错误，不能完成对请求的处理，如<span class="number">500</span></span><br><span class="line"></span><br><span class="line">status属性: 获取状态码，如<span class="number">200</span></span><br><span class="line">statusText属性：获取状态码文本信息，如OK</span><br><span class="line"></span><br><span class="line">http网络状态码：</span><br><span class="line"><span class="number">200</span>：请求成功；</span><br><span class="line"><span class="number">301</span>：永久转移，访问老域名永久指向新域名，就是<span class="number">301</span>永久转移。</span><br><span class="line"><span class="number">302</span>：临时转移，服务器临时转移地址，缓解服务器压力。</span><br><span class="line"><span class="number">304</span>：读取的缓存数据，我们不经常改变的文件比如文件中css，js，我们存在缓存中，页面再次刷新请求服务多次，不怎么改变的文件可以使用缓存。</span><br><span class="line"><span class="number">307</span>：临时重定向</span><br><span class="line"><span class="number">400</span>：请求参数错误</span><br><span class="line"><span class="number">401</span>：请求权限不够</span><br><span class="line"><span class="number">404</span>：地址不存在</span><br><span class="line"><span class="number">500</span>：未知服务器错误</span><br><span class="line"><span class="number">503</span>：服务器超负荷请求，比如一个<span class="number">1000</span>人可以访问的网址，多于一千人访问就会出现<span class="number">503</span></span><br><span class="line"><span class="number">504</span>：服务器请求响应超时。</span><br></pre></td></tr></table></figure>
 <h5 id="获取响应数据"><a href="#获取响应数据" class="headerlink" title="获取响应数据"></a>获取响应数据</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.responseText: 获得字符串形式的响应数据</span><br><span class="line">xhr.responseXML: 获得XML形式的响应数据</span><br></pre></td></tr></table></figure>
 <p>以上实例代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState === <span class="number">4</span> &amp;&amp; xhr.status === <span class="number">200</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(xhr.responseText);</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        alert(<span class="string">"Error: "</span> + xhr.status);<span class="comment">//失败时打印状态码</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>注意：<span bgcolor="pink">请求完成</span>和<span bgcolor="pink">请求成功</span>不同，<span bgcolor="pink">请求完成</span>可能请求失败。</p>
+<p>注意：请求完成和请求成功不同，请求完成可能请求失败。</p>
 
       
     </div>
@@ -489,7 +489,7 @@
   <p><span>本文标题:</span><a href="/2018/04/05/ajax/">ajax</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 AHRL 的个人博客">AHRL</a></p>
   <p><span>发布时间:</span>2018年04月05日 - 19:04</p>
-  <p><span>最后更新:</span>2018年04月19日 - 19:04</p>
+  <p><span>最后更新:</span>2018年04月26日 - 09:04</p>
   <p><span>原始链接:</span><a href="/2018/04/05/ajax/" title="ajax">http://ahrler.xyz/2018/04/05/ajax/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://ahrler.xyz/2018/04/05/ajax/"  aria-label="复制成功！"></i></span>
   </p>
@@ -617,7 +617,7 @@
 <span class="post-meta-divider">|</span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共7.9k字</span>
+  <span class="post-count">博客全站共8.6k字</span>
 </div>
 
 <script>
