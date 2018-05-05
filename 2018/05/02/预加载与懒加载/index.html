@@ -146,7 +146,7 @@
 <meta property="og:site_name" content="AHRL">
 <meta property="og:description" content="预加载和懒加载的使用场景不同，可以先了解一下浏览器机制，有助于理解两者的原理。在网页中合理使用预加载和懒加载有效地减少用户的等待时间，提高用户体验。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-05T09:11:08.150Z">
+<meta property="og:updated_time" content="2018-05-05T09:16:05.131Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="预加载与懒加载">
 <meta name="twitter:description" content="预加载和懒加载的使用场景不同，可以先了解一下浏览器机制，有助于理解两者的原理。在网页中合理使用预加载和懒加载有效地减少用户的等待时间，提高用户体验。">
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,720
+                  1,752
                 </span>
               
 
@@ -440,6 +440,7 @@
 <li>预加载</li>
 <li>懒加载</li>
 </ul>
+<p>该篇博客参考以下文章总结而成：<br><a href="http://web.jobbole.com/86785/" target="_blank" rel="noopener">Javascript图片预加载详解</a><br><a href="https://www.cnblogs.com/Cathamerst/p/7445715.html" target="_blank" rel="noopener">懒加载和预加载的实现</a></p>
 <h4 id="页面加载过程"><a href="#页面加载过程" class="headerlink" title="页面加载过程"></a>页面加载过程</h4><p>简单说一下页面的加载过程，如果页面不是第一次访问，那么可能会出现浏览器缓存现象，在本地调试代码的时候也会遇到这种问题，所以在实在想不通页面为什么没有变化的时候，可以清除一下浏览器的缓存。<br><br>如果页面是第一次访问，浏览器向服务器http请求后，服务器返回html文件，在整个页面加载过程中，总的来说是按顺序从上到下执行，这是基于js的单线程机制，但是html和css是并行加载的，html生成dom树，css生成rule树，两者相结合生成render树。<br><br>接下来遇到js文件，则会造成堵塞，页面会一直等到js文件执行完才会进行下一步操作。<br><br>在进行html中body部分加载时，如果遇到图片的src，它会请求资源，此时图片还没下载完全，在页面上并不会留下图片的位置，而html不会堵塞，将会继续执行下去。<br><br>等到有图片请求下载完成，html又会重新渲染页面，将图片显示出来。<br><br>了解了页面的加载过程后更好理解预加载和懒加载，对页面进行更好的优化。</p>
 <h4 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h4><h5 id="预加载的核心："><a href="#预加载的核心：" class="headerlink" title="预加载的核心："></a>预加载的核心：</h5><ol>
 <li>图片等静态资源在使用前提前请求。</li>
@@ -608,7 +609,7 @@
 <span class="post-meta-divider">|</span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共11.2k字</span>
+  <span class="post-count">博客全站共11.3k字</span>
 </div>
 
 <script>
