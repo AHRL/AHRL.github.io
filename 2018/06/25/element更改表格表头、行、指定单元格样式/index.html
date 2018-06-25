@@ -146,7 +146,7 @@
 <meta property="og:site_name" content="AHRL">
 <meta property="og:description" content="在学习vue过程中，总结了一下使用element时更改表格样式的方式。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-25T10:41:18.451Z">
+<meta property="og:updated_time" content="2018-06-25T10:54:29.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="element更改表格表头、行、指定单元格样式">
 <meta name="twitter:description" content="在学习vue过程中，总结了一下使用element时更改表格样式的方式。">
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  286
+                  209
                 </span>
               
 
@@ -444,10 +444,8 @@
 <ol start="2">
 <li>对象写法</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:header-cell-style</span>=<span class="string">"&#123;background:red&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注意在data里写入</span></span><br><span class="line">red:<span class="string">'red'</span></span><br></pre></td></tr></table></figure>
-<p>若是没有在data里写入red，会报错‘Property or method “red” is not defined on the instance but referenced during render.’。意思是该属性或者方法没有在实例上定义。</p>
-<h4 id="更改表格中某个单元格的样式"><a href="#更改表格中某个单元格的样式" class="headerlink" title="更改表格中某个单元格的样式"></a>更改表格中某个单元格的样式</h4><ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:header-cell-style</span>=<span class="string">"&#123;background:'red'&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
 <li>函数写法</li>
 </ol>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:header-cell-style</span>=<span class="string">"cellStyle"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -455,8 +453,7 @@
 <ol start="2">
 <li>对象写法</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:cell-style</span>=<span class="string">"&#123;background:pink&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在data里写上</span></span><br><span class="line">pink:<span class="string">'pink'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:cell-style</span>=<span class="string">"&#123;background:'pink'&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>其他设置跟上面的写法基本相同，跟element官网的属性想结合，就可以达到想要的效果。</p>
 
       
@@ -602,7 +599,7 @@
 <span class="post-meta-divider">|</span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共13.1k字</span>
+  <span class="post-count">博客全站共13.0k字</span>
 </div>
 
 <script>
