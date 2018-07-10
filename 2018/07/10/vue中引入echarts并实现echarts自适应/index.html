@@ -125,7 +125,7 @@
 
 
 
-  <meta name="keywords" content="npm,清除缓存,无法清除," />
+  <meta name="keywords" content="vue,echarts,自适应," />
 
 
 
@@ -138,18 +138,18 @@
 
 
 
-<meta name="description" content="使用webpack时遇到的问题，npm强制清除缓存时无法清除。">
-<meta name="keywords" content="npm,清除缓存,无法清除">
+<meta name="description" content="在许多项目中需要使用到柱状图、饼状图等，在本篇博客中介绍echarts的自适应。">
+<meta name="keywords" content="vue,echarts,自适应">
 <meta property="og:type" content="article">
-<meta property="og:title" content="npm强制清除缓存时无法清除问题">
-<meta property="og:url" content="http://ahrler.xyz/2018/06/13/npm强制清除缓存时无法清除问题/index.html">
+<meta property="og:title" content="vue中引入echarts并实现echarts自适应">
+<meta property="og:url" content="http://ahrler.xyz/2018/07/10/vue中引入echarts并实现echarts自适应/index.html">
 <meta property="og:site_name" content="AHRL">
-<meta property="og:description" content="使用webpack时遇到的问题，npm强制清除缓存时无法清除。">
+<meta property="og:description" content="在许多项目中需要使用到柱状图、饼状图等，在本篇博客中介绍echarts的自适应。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-25T10:44:41.034Z">
+<meta property="og:updated_time" content="2018-07-10T02:51:46.486Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="npm强制清除缓存时无法清除问题">
-<meta name="twitter:description" content="使用webpack时遇到的问题，npm强制清除缓存时无法清除。">
+<meta name="twitter:title" content="vue中引入echarts并实现echarts自适应">
+<meta name="twitter:description" content="在许多项目中需要使用到柱状图、饼状图等，在本篇博客中介绍echarts的自适应。">
 
 
 
@@ -179,13 +179,13 @@
 
 
 
-  <link rel="canonical" href="http://ahrler.xyz/2018/06/13/npm强制清除缓存时无法清除问题/"/>
+  <link rel="canonical" href="http://ahrler.xyz/2018/07/10/vue中引入echarts并实现echarts自适应/"/>
 
 
 
 
 
-  <title>npm强制清除缓存时无法清除问题 | AHRL</title>
+  <title>vue中引入echarts并实现echarts自适应 | AHRL</title>
   <style>
   .forkme{
  display: none;
@@ -313,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ahrler.xyz/2018/06/13/npm强制清除缓存时无法清除问题/">
+    <link itemprop="mainEntityOfPage" href="http://ahrler.xyz/2018/07/10/vue中引入echarts并实现echarts自适应/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AHRL">
@@ -330,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">npm强制清除缓存时无法清除问题</h1>
+          <h1 class="post-title" itemprop="name headline">vue中引入echarts并实现echarts自适应</h1>
         
 
         <div class="post-meta">
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-13T22:05:40+08:00">
-                2018-06-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-10T10:34:21+08:00">
+                2018-07-10
               </time>
             
 
@@ -365,8 +365,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/npm/" itemprop="url" rel="index">
-                    <span itemprop="name">npm</span>
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
                   </a>
                 </span>
 
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  84
+                  286
                 </span>
               
 
@@ -433,10 +433,12 @@
       
 
       
-        <p>使用webpack时遇到的问题，npm强制清除缓存时无法清除。</p>
+        <p>在许多项目中需要使用到柱状图、饼状图等，在本篇博客中介绍echarts的自适应。</p>
 <a id="more"></a>
-<p>强制清除npm指令<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm cache clean -f</span><br></pre></td></tr></table></figure></p>
-<p>在执行以上指令后，命令一直没有终止，具体忘了截图，如果遇到这种情况，请检查一下自己的node版本，我的当时是node版本过低。</p>
+<p>实现echarts的自适应可以使用window.onresize()，具体操作如下：<br><br><br>npm安装echats：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts --save</span><br></pre></td></tr></table></figure></p>
+<p>在使用echarts的页面引入echarts<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> echarts = <span class="built_in">require</span>(<span class="string">'echarts/lib/echarts'</span>)</span><br><span class="line"><span class="comment">//根据需要引入相应图的组件</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'echarts/lib/chart/bar'</span>)<span class="comment">//柱状图</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"echarts/lib/chart/lines"</span>)<span class="comment">//折线图</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'echarts/lib/chart/pie'</span>)<span class="comment">//饼状图</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"echarts/lib/component/toolbox"</span>)<span class="comment">//上方可以下载图片、刷新等工具栏</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'echarts/lib/component/title'</span>)<span class="comment">//标题</span></span><br></pre></td></tr></table></figure></p>
+<p>页面上创建容纳echarts的盒子<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myChart"</span> <span class="attr">:style</span>=<span class="string">"&#123;width:'100%',height:'600px'&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myChartPie"</span> <span class="attr">:style</span>=<span class="string">"&#123;width:'100%',height:'600px'&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在js中的操作<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//data</span></span><br><span class="line">data()&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        myChart: &#123;&#125;,</span><br><span class="line">        myChartPie: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//methods 初始化echarts</span></span><br><span class="line">methods: &#123;</span><br><span class="line">drawChart() &#123;</span><br><span class="line">    <span class="keyword">let</span> idx = <span class="number">1</span></span><br><span class="line">    <span class="keyword">let</span> myChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'myChart'</span>))</span><br><span class="line">    <span class="keyword">let</span> myChartPie = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'myChartPie'</span>))</span><br><span class="line">    myChart.setOption(&#123;...&#125;)</span><br><span class="line">    myChartPie.setOption(&#123;...&#125;)</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">myChart</span>: myChart, <span class="attr">myChartPie</span>: myChartPie &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//mounted 挂载后执行</span></span><br><span class="line">mounted() &#123;</span><br><span class="line">        <span class="keyword">let</span> echarts = <span class="keyword">this</span>.drawChart()</span><br><span class="line">        <span class="keyword">this</span>.myChart = echarts.myChart</span><br><span class="line">        <span class="keyword">this</span>.myChartPie = echarts.myChartPie</span><br><span class="line">        <span class="built_in">window</span>.onresize = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 这里使用箭头函数，避免this指向问题</span></span><br><span class="line">            <span class="keyword">this</span>.myChart.resize()</span><br><span class="line">            <span class="keyword">this</span>.myChartPie.resize()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -452,12 +454,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2018/06/13/npm强制清除缓存时无法清除问题/">npm强制清除缓存时无法清除问题</a></p>
+  <p><span>本文标题:</span><a href="/2018/07/10/vue中引入echarts并实现echarts自适应/">vue中引入echarts并实现echarts自适应</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 AHRL 的个人博客">AHRL</a></p>
-  <p><span>发布时间:</span>2018年06月13日 - 22:06</p>
-  <p><span>最后更新:</span>2018年06月25日 - 18:06</p>
-  <p><span>原始链接:</span><a href="/2018/06/13/npm强制清除缓存时无法清除问题/" title="npm强制清除缓存时无法清除问题">http://ahrler.xyz/2018/06/13/npm强制清除缓存时无法清除问题/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://ahrler.xyz/2018/06/13/npm强制清除缓存时无法清除问题/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2018年07月10日 - 10:07</p>
+  <p><span>最后更新:</span>2018年07月10日 - 10:07</p>
+  <p><span>原始链接:</span><a href="/2018/07/10/vue中引入echarts并实现echarts自适应/" title="vue中引入echarts并实现echarts自适应">http://ahrler.xyz/2018/07/10/vue中引入echarts并实现echarts自适应/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://ahrler.xyz/2018/07/10/vue中引入echarts并实现echarts自适应/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -495,11 +497,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/npm/" rel="tag">npm</a>
+            <a href="/tags/vue/" rel="tag">vue</a>
           
-            <a href="/tags/清除缓存/" rel="tag">清除缓存</a>
+            <a href="/tags/echarts/" rel="tag">echarts</a>
           
-            <a href="/tags/无法清除/" rel="tag">无法清除</a>
+            <a href="/tags/自适应/" rel="tag">自适应</a>
           
         </div>
       
@@ -512,8 +514,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/07/element-ui使用导航栏跳转路由用法/" rel="next" title="element-ui使用导航栏跳转路由用法">
-                <i class="fa fa-chevron-left"></i> element-ui使用导航栏跳转路由用法
+              <a href="/2018/06/25/element更改表格表头、行、指定单元格样式/" rel="next" title="element更改表格表头、行、指定单元格样式">
+                <i class="fa fa-chevron-left"></i> element更改表格表头、行、指定单元格样式
               </a>
             
           </div>
@@ -521,10 +523,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/25/element更改表格表头、行、指定单元格样式/" rel="prev" title="element更改表格表头、行、指定单元格样式">
-                element更改表格表头、行、指定单元格样式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
