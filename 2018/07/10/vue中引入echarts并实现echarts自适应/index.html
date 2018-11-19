@@ -138,18 +138,18 @@
 
 
 
-<meta name="description" content="在许多项目中需要使用到柱状图、饼状图等，在本篇博客中介绍echarts的自适应。">
+<meta name="description" content="在许多项目中需要使用到柱状图、饼状图等，在本篇博客中介绍echarts的自适应。 &amp;lt;!-- more --&amp;gt; 实现echarts的自适应可以使用window.onresize()，具体操作如下： &amp;lt;br&amp;gt; npm安装echats： 1npm install echarts --save 在使用echarts的页面引入echarts 1234567let echarts =">
 <meta name="keywords" content="vue,echarts,自适应">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue中引入echarts并实现echarts自适应">
 <meta property="og:url" content="http://ahrler.xyz/2018/07/10/vue中引入echarts并实现echarts自适应/index.html">
 <meta property="og:site_name" content="AHRL">
-<meta property="og:description" content="在许多项目中需要使用到柱状图、饼状图等，在本篇博客中介绍echarts的自适应。">
+<meta property="og:description" content="在许多项目中需要使用到柱状图、饼状图等，在本篇博客中介绍echarts的自适应。 &amp;lt;!-- more --&amp;gt; 实现echarts的自适应可以使用window.onresize()，具体操作如下： &amp;lt;br&amp;gt; npm安装echats： 1npm install echarts --save 在使用echarts的页面引入echarts 1234567let echarts =">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-07-10T02:51:46.486Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue中引入echarts并实现echarts自适应">
-<meta name="twitter:description" content="在许多项目中需要使用到柱状图、饼状图等，在本篇博客中介绍echarts的自适应。">
+<meta name="twitter:description" content="在许多项目中需要使用到柱状图、饼状图等，在本篇博客中介绍echarts的自适应。 &amp;lt;!-- more --&amp;gt; 实现echarts的自适应可以使用window.onresize()，具体操作如下： &amp;lt;br&amp;gt; npm安装echats： 1npm install echarts --save 在使用echarts的页面引入echarts 1234567let echarts =">
 
 
 
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  286
+                  285
                 </span>
               
 
@@ -434,11 +434,17 @@
 
       
         <p>在许多项目中需要使用到柱状图、饼状图等，在本篇博客中介绍echarts的自适应。</p>
-<a id="more"></a>
-<p>实现echarts的自适应可以使用window.onresize()，具体操作如下：<br><br><br>npm安装echats：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts --save</span><br></pre></td></tr></table></figure></p>
-<p>在使用echarts的页面引入echarts<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> echarts = <span class="built_in">require</span>(<span class="string">'echarts/lib/echarts'</span>)</span><br><span class="line"><span class="comment">//根据需要引入相应图的组件</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'echarts/lib/chart/bar'</span>)<span class="comment">//柱状图</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"echarts/lib/chart/lines"</span>)<span class="comment">//折线图</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'echarts/lib/chart/pie'</span>)<span class="comment">//饼状图</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"echarts/lib/component/toolbox"</span>)<span class="comment">//上方可以下载图片、刷新等工具栏</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'echarts/lib/component/title'</span>)<span class="comment">//标题</span></span><br></pre></td></tr></table></figure></p>
-<p>页面上创建容纳echarts的盒子<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myChart"</span> <span class="attr">:style</span>=<span class="string">"&#123;width:'100%',height:'600px'&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myChartPie"</span> <span class="attr">:style</span>=<span class="string">"&#123;width:'100%',height:'600px'&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>在js中的操作<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//data</span></span><br><span class="line">data()&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        myChart: &#123;&#125;,</span><br><span class="line">        myChartPie: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//methods 初始化echarts</span></span><br><span class="line">methods: &#123;</span><br><span class="line">drawChart() &#123;</span><br><span class="line">    <span class="keyword">let</span> idx = <span class="number">1</span></span><br><span class="line">    <span class="keyword">let</span> myChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'myChart'</span>))</span><br><span class="line">    <span class="keyword">let</span> myChartPie = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'myChartPie'</span>))</span><br><span class="line">    myChart.setOption(&#123;...&#125;)</span><br><span class="line">    myChartPie.setOption(&#123;...&#125;)</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">myChart</span>: myChart, <span class="attr">myChartPie</span>: myChartPie &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//mounted 挂载后执行</span></span><br><span class="line">mounted() &#123;</span><br><span class="line">        <span class="keyword">let</span> echarts = <span class="keyword">this</span>.drawChart()</span><br><span class="line">        <span class="keyword">this</span>.myChart = echarts.myChart</span><br><span class="line">        <span class="keyword">this</span>.myChartPie = echarts.myChartPie</span><br><span class="line">        <span class="built_in">window</span>.onresize = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 这里使用箭头函数，避免this指向问题</span></span><br><span class="line">            <span class="keyword">this</span>.myChart.resize()</span><br><span class="line">            <span class="keyword">this</span>.myChartPie.resize()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>&lt;!-- more --&gt;</p>
+<p>实现echarts的自适应可以使用window.onresize()，具体操作如下：
+&lt;br&gt;
+npm安装echats：
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts --save</span><br></pre></td></tr></table></figure></p>
+<p>在使用echarts的页面引入echarts
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> echarts = <span class="built_in">require</span>(<span class="string">'echarts/lib/echarts'</span>)</span><br><span class="line"><span class="comment">//根据需要引入相应图的组件</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'echarts/lib/chart/bar'</span>)<span class="comment">//柱状图</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"echarts/lib/chart/lines"</span>)<span class="comment">//折线图</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'echarts/lib/chart/pie'</span>)<span class="comment">//饼状图</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"echarts/lib/component/toolbox"</span>)<span class="comment">//上方可以下载图片、刷新等工具栏</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'echarts/lib/component/title'</span>)<span class="comment">//标题</span></span><br></pre></td></tr></table></figure></p>
+<p>页面上创建容纳echarts的盒子
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myChart"</span> <span class="attr">:style</span>=<span class="string">"&#123;width:'100%',height:'600px'&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myChartPie"</span> <span class="attr">:style</span>=<span class="string">"&#123;width:'100%',height:'600px'&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在js中的操作
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//data</span></span><br><span class="line">data()&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        myChart: &#123;&#125;,</span><br><span class="line">        myChartPie: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//methods 初始化echarts</span></span><br><span class="line">methods: &#123;</span><br><span class="line">drawChart() &#123;</span><br><span class="line">    <span class="keyword">let</span> idx = <span class="number">1</span></span><br><span class="line">    <span class="keyword">let</span> myChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'myChart'</span>))</span><br><span class="line">    <span class="keyword">let</span> myChartPie = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'myChartPie'</span>))</span><br><span class="line">    myChart.setOption(&#123;...&#125;)</span><br><span class="line">    myChartPie.setOption(&#123;...&#125;)</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">myChart</span>: myChart, <span class="attr">myChartPie</span>: myChartPie &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//mounted 挂载后执行</span></span><br><span class="line">mounted() &#123;</span><br><span class="line">        <span class="keyword">let</span> echarts = <span class="keyword">this</span>.drawChart()</span><br><span class="line">        <span class="keyword">this</span>.myChart = echarts.myChart</span><br><span class="line">        <span class="keyword">this</span>.myChartPie = echarts.myChartPie</span><br><span class="line">        <span class="built_in">window</span>.onresize = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 这里使用箭头函数，避免this指向问题</span></span><br><span class="line">            <span class="keyword">this</span>.myChart.resize()</span><br><span class="line">            <span class="keyword">this</span>.myChartPie.resize()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -524,6 +530,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/11/18/撸一个聊天室-vue-koa2-websocket-mongodb/" rel="prev" title="撸一个聊天室(vue+koa2+websokect+mongodb)">
+                撸一个聊天室(vue+koa2+websokect+mongodb) <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -583,7 +593,7 @@
 <span class="post-meta-divider">|</span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共13.3k字</span>
+  <span class="post-count">博客全站共16.7k字</span>
 </div>
 
 <script>

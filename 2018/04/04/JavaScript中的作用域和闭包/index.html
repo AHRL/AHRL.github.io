@@ -138,18 +138,18 @@
 
 
 
-<meta name="description" content="该篇博客参考《你不知道的JavaScript（上）》总结，主要是对作用域和闭包进行了深入的理解，并结合书进行了概括。">
+<meta name="description" content="该篇博客参考《你不知道的JavaScript（上）》总结，主要是对作用域和闭包进行了深入的理解，并结合书进行了概括。 &amp;lt;!-- more --&amp;gt; 目录  词法作用域  作用域 函数作用域  函数内容私有化 IIFE（立即执行函数表达式）   块作用域  with try/catch let const     闭包  无处不在的闭包 模块化    词法作用域 * 作用域 1234567">
 <meta name="keywords" content="JavaScript,作用域,闭包">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript中的作用域和闭包">
 <meta property="og:url" content="http://ahrler.xyz/2018/04/04/JavaScript中的作用域和闭包/index.html">
 <meta property="og:site_name" content="AHRL">
-<meta property="og:description" content="该篇博客参考《你不知道的JavaScript（上）》总结，主要是对作用域和闭包进行了深入的理解，并结合书进行了概括。">
+<meta property="og:description" content="该篇博客参考《你不知道的JavaScript（上）》总结，主要是对作用域和闭包进行了深入的理解，并结合书进行了概括。 &amp;lt;!-- more --&amp;gt; 目录  词法作用域  作用域 函数作用域  函数内容私有化 IIFE（立即执行函数表达式）   块作用域  with try/catch let const     闭包  无处不在的闭包 模块化    词法作用域 * 作用域 1234567">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-04-19T11:45:50.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript中的作用域和闭包">
-<meta name="twitter:description" content="该篇博客参考《你不知道的JavaScript（上）》总结，主要是对作用域和闭包进行了深入的理解，并结合书进行了概括。">
+<meta name="twitter:description" content="该篇博客参考《你不知道的JavaScript（上）》总结，主要是对作用域和闭包进行了深入的理解，并结合书进行了概括。 &amp;lt;!-- more --&amp;gt; 目录  词法作用域  作用域 函数作用域  函数内容私有化 IIFE（立即执行函数表达式）   块作用域  with try/catch let const     闭包  无处不在的闭包 模块化    词法作用域 * 作用域 1234567">
 
 
 
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,283
+                  2,292
                 </span>
               
 
@@ -434,16 +434,20 @@
 
       
         <p>该篇博客参考《你不知道的JavaScript（上）》总结，主要是对作用域和闭包进行了深入的理解，并结合书进行了概括。</p>
-<a id="more"></a>
-<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
-<li>词法作用域<ul>
+<p>&lt;!-- more --&gt;</p>
+<h3>目录</h3>
+<ul>
+<li>词法作用域
+<ul>
 <li>作用域</li>
-<li>函数作用域<ul>
+<li>函数作用域
+<ul>
 <li>函数内容私有化</li>
 <li>IIFE（立即执行函数表达式）</li>
 </ul>
 </li>
-<li>块作用域<ul>
+<li>块作用域
+<ul>
 <li>with</li>
 <li>try/catch</li>
 <li>let</li>
@@ -452,85 +456,109 @@
 </li>
 </ul>
 </li>
-<li>闭包<ul>
+<li>闭包
+<ul>
 <li>无处不在的闭包</li>
 <li>模块化</li>
 </ul>
 </li>
 </ul>
-<h3 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h3><h4 id="作用域"><a href="#作用域" class="headerlink" title="* 作用域"></a>* 作用域</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b = a * <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">c</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a,b,c);</span><br><span class="line">    &#125;</span><br><span class="line">    bar(b * <span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo(<span class="number">2</span>);<span class="comment">//2,4,12</span></span><br></pre></td></tr></table></figure>
-<p>上述代码包含三个作用域：<br></p>
+<h3>词法作用域</h3>
+<h4>* 作用域</h4>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b = a * <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">c</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a,b,c);</span><br><span class="line">    &#125;</span><br><span class="line">    bar(b * <span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo(<span class="number">2</span>);<span class="comment">//2,4,12</span></span><br></pre></td></tr></table></figure></p>
+<p>上述代码包含三个作用域：&lt;br&gt;</p>
 <ol>
 <li>全局作用域：包含所有的代码的最外层为全局作用域,在这里全局作用域只有foo标识符。</li>
 <li>foo函数创建的作用域，里面包含a、b和bar三个标识符。</li>
-<li>bar函数创建的作用域，里面包含c标识符。<br>从上述分析看来，作用域一层一层向内嵌套的。可以总结成：作用域是由代码所写位置决定的。<br>标识符查找方式：在查找一个标识符时，引擎会先在当前作用域中寻找，若未找到则向父级作用域中寻找，直到找到该标识符或找到全局作用域为止。作用域查找会在找到第一个匹配的标识符时停止。<h4 id="函数作用域"><a href="#函数作用域" class="headerlink" title="* 函数作用域"></a>* 函数作用域</h4>可以这么说，每声明一个函数都会为其自身创建一个作用域。函数作用域的含义是指，属于这个函数的全部变量都可以在整个函数范围内使用及复用（包括这个函数所包含的子作用域）。</li>
+<li>bar函数创建的作用域，里面包含c标识符。
+从上述分析看来，作用域一层一层向内嵌套的。可以总结成：作用域是由代码所写位置决定的。
+标识符查找方式：在查找一个标识符时，引擎会先在当前作用域中寻找，若未找到则向父级作用域中寻找，直到找到该标识符或找到全局作用域为止。作用域查找会在找到第一个匹配的标识符时停止。</li>
 </ol>
+<h4>* 函数作用域</h4>
+<p>可以这么说，每声明一个函数都会为其自身创建一个作用域。函数作用域的含义是指，属于这个函数的全部变量都可以在整个函数范围内使用及复用（包括这个函数所包含的子作用域）。</p>
 <ul>
-<li>函数内容私有化<blockquote>
-<p>上面说每声明一个函数都会为其自身创建一个作用域，反过来看，也可以说函数的作用域将这个函数包装了起来，结合标识符查找方式，在函数作用域外是不能访问到函数中的变量及函数的。因此我们在写代码的过程中，应该思考如何选择作用域来包含变量和函数，不能为了方便而将所有的变量都在全局作用域中声明，这样便不能体现对变量和函数的使用权限。对比以下两种写法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">&gt;    a = <span class="number">2</span> * b;</span><br><span class="line">&gt;    doSomethingElse(a);</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;<span class="function"><span class="keyword">function</span> <span class="title">doSomethingElse</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">&gt;        <span class="comment">//代码</span></span><br><span class="line">&gt;    &#125;</span><br><span class="line">&gt;<span class="keyword">var</span> a;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
+<li>函数内容私有化</li>
 </ul>
 <blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">&gt;    <span class="keyword">var</span> a = <span class="number">2</span> * b;</span><br><span class="line">&gt;    <span class="function"><span class="keyword">function</span> <span class="title">doSomethingElse</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">&gt;        <span class="comment">//代码</span></span><br><span class="line">&gt;    &#125;</span><br><span class="line">&gt;    doSomethingElse(a);</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>上面说每声明一个函数都会为其自身创建一个作用域，反过来看，也可以说函数的作用域将这个函数包装了起来，结合标识符查找方式，在函数作用域外是不能访问到函数中的变量及函数的。因此我们在写代码的过程中，应该思考如何选择作用域来包含变量和函数，不能为了方便而将所有的变量都在全局作用域中声明，这样便不能体现对变量和函数的使用权限。对比以下两种写法：
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">&gt;    a = <span class="number">2</span> * b;</span><br><span class="line">&gt;    doSomethingElse(a);</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;<span class="function"><span class="keyword">function</span> <span class="title">doSomethingElse</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">&gt;        <span class="comment">//代码</span></span><br><span class="line">&gt;    &#125;</span><br><span class="line">&gt;<span class="keyword">var</span> a;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">&gt;    <span class="keyword">var</span> a = <span class="number">2</span> * b;</span><br><span class="line">&gt;    <span class="function"><span class="keyword">function</span> <span class="title">doSomethingElse</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">&gt;        <span class="comment">//代码</span></span><br><span class="line">&gt;    &#125;</span><br><span class="line">&gt;    doSomethingElse(a);</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <blockquote>
 <p>虽说第一种写法没有错误，但是相比于第二种，无论从代码美观度还是设计的合理度来看，使用第二种写法更正确。第二种写法将只在函数doSomething中使用的变量和函数在该函数内部，严格限制了使用权限。当代码量过大时，js文件中的变量及函数很多，你可能根本不记得是否使用过某个名字，而这种包装模式也就在一定程度上避免了标识名的冲突。</p>
+</blockquote>
 <ul>
-<li>IIFE(立即执行函数表达式)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">&gt;(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&gt;   <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">&gt;   <span class="built_in">console</span>.log(a);<span class="comment">//3</span></span><br><span class="line">&gt;&#125;)()</span><br><span class="line">&gt;<span class="built_in">console</span>.log(a);<span class="comment">//2</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
+<li>IIFE(立即执行函数表达式)</li>
 </ul>
+<blockquote>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">&gt;(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&gt;   <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">&gt;   <span class="built_in">console</span>.log(a);<span class="comment">//3</span></span><br><span class="line">&gt;&#125;)()</span><br><span class="line">&gt;<span class="built_in">console</span>.log(a);<span class="comment">//2</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <blockquote>
-<p>上面的代码给foo函数加了两个括号，第一个()将函数变成了表达式，第二个()执行了这个函数。还有另外一个改进的形式:(function(){..}())，这两种形式在功能上是一致的，使用看个人喜好。<br><br>为什么要用IIFE？</p>
+<p>上面的代码给foo函数加了两个括号，第一个()将函数变成了表达式，第二个()执行了这个函数。还有另外一个改进的形式:(function(){..}())，这两种形式在功能上是一致的，使用看个人喜好。&lt;br&gt;
+为什么要用IIFE？</p>
 <blockquote>
 <ol>
 <li>传统的方法定义和执行分开写，而IIFE一步到位；</li>
-<li>传统的方法直接污染全局命名空间（浏览器里的 global 对象，如 window）；<br>不污染全局命名空间是因为IIFE创建了一个新的函数作用域，真正的业务代码被封装在其中，便不会污染全局。如果需要传入参数，甚至是全局对象，可以这样写：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">&gt;(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">global</span>)</span>&#123;</span><br><span class="line">&gt;   <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">&gt;   <span class="built_in">console</span>.log(a);<span class="comment">//3</span></span><br><span class="line">&gt;   <span class="built_in">console</span>.log(global.a);<span class="comment">//2</span></span><br><span class="line">&gt;&#125;)(<span class="built_in">window</span>)<span class="comment">//在这个括号传入</span></span><br><span class="line">&gt;<span class="built_in">console</span>.log(a);<span class="comment">//2</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
+<li>传统的方法直接污染全局命名空间（浏览器里的 global 对象，如 window）；
+不污染全局命名空间是因为IIFE创建了一个新的函数作用域，真正的业务代码被封装在其中，便不会污染全局。如果需要传入参数，甚至是全局对象，可以这样写：&lt;br&gt;
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">&gt;(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">global</span>)</span>&#123;</span><br><span class="line">&gt;   <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">&gt;   <span class="built_in">console</span>.log(a);<span class="comment">//3</span></span><br><span class="line">&gt;   <span class="built_in">console</span>.log(global.a);<span class="comment">//2</span></span><br><span class="line">&gt;&#125;)(<span class="built_in">window</span>)<span class="comment">//在这个括号传入</span></span><br><span class="line">&gt;<span class="built_in">console</span>.log(a);<span class="comment">//2</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></li>
 </ol>
 </blockquote>
 </blockquote>
-<h4 id="块级作用域"><a href="#块级作用域" class="headerlink" title="* 块级作用域"></a>* 块级作用域</h4><ul>
-<li>with<blockquote>
-<p>with通常被当做重复引用同一个对象中的多个属性的快捷方式，而用with从对象中创建出的作用域仅在with声明中而非外部作用域中有效。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">var</span> obj = &#123;</span><br><span class="line">&gt;    a:<span class="number">1</span>,</span><br><span class="line">&gt;    b:<span class="number">2</span>,</span><br><span class="line">&gt;    c:<span class="number">3</span></span><br><span class="line">&gt;&#125;;</span><br><span class="line">&gt;<span class="keyword">with</span>(obj)&#123;</span><br><span class="line">&gt;    a = <span class="number">3</span>;</span><br><span class="line">&gt;    b = <span class="number">4</span>;</span><br><span class="line">&gt;    c = <span class="number">5</span>;</span><br><span class="line">&gt;&#125;<span class="comment">//更改obj对象各个属性的属性值</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
+<h4>* 块级作用域</h4>
+<ul>
+<li>with</li>
 </ul>
 <blockquote>
-<h4 id="try-catch"><a href="#try-catch" class="headerlink" title="* try/catch"></a>* try/catch</h4><p>try/catch的catch分句会创建一个块作用域，其中声明的变量仅在catch内部有效。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">try</span>&#123;</span><br><span class="line">&gt;    <span class="literal">undefined</span>();<span class="comment">//执行一个非法操作来强制制造一个异常</span></span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">&gt;    <span class="built_in">console</span>.log(err);<span class="comment">//能够正常执行</span></span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;<span class="built_in">console</span>.log(err);<span class="comment">//ReferenceError：err not found</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+<p>with通常被当做重复引用同一个对象中的多个属性的快捷方式，而用with从对象中创建出的作用域仅在with声明中而非外部作用域中有效。
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">var</span> obj = &#123;</span><br><span class="line">&gt;    a:<span class="number">1</span>,</span><br><span class="line">&gt;    b:<span class="number">2</span>,</span><br><span class="line">&gt;    c:<span class="number">3</span></span><br><span class="line">&gt;&#125;;</span><br><span class="line">&gt;<span class="keyword">with</span>(obj)&#123;</span><br><span class="line">&gt;    a = <span class="number">3</span>;</span><br><span class="line">&gt;    b = <span class="number">4</span>;</span><br><span class="line">&gt;    c = <span class="number">5</span>;</span><br><span class="line">&gt;&#125;<span class="comment">//更改obj对象各个属性的属性值</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<h4>* try/catch</h4>
+<p>try/catch的catch分句会创建一个块作用域，其中声明的变量仅在catch内部有效。
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">try</span>&#123;</span><br><span class="line">&gt;    <span class="literal">undefined</span>();<span class="comment">//执行一个非法操作来强制制造一个异常</span></span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">&gt;    <span class="built_in">console</span>.log(err);<span class="comment">//能够正常执行</span></span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;<span class="built_in">console</span>.log(err);<span class="comment">//ReferenceError：err not found</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <ul>
-<li>let<blockquote>
-<p>let是在ES6中引入的除var以外的另一种变量声明方式，let关键字可以将变量绑定到所在的任意作用域中，一般都是在{..}内部。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">var</span> foo = <span class="literal">true</span>;</span><br><span class="line">&gt;<span class="keyword">if</span>(foo)&#123;</span><br><span class="line">&gt;    &#123;<span class="comment">// 显示的块，如果去掉&#123;&#125;就是隐式绑定了</span></span><br><span class="line">&gt;        <span class="keyword">let</span> bar = foo * <span class="number">2</span>;</span><br><span class="line">&gt;        bar = something(bar);</span><br><span class="line">&gt;        <span class="built_in">console</span>.log(bar);</span><br><span class="line">&gt;    &#125;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;<span class="built_in">console</span>.log(bar);<span class="comment">//ReferenceError</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
+<li>let</li>
 </ul>
 <blockquote>
-<p>还有一点需要注意，使用let进行的声明不会在块级作用域中进行提升，声明的代码被运行之前，声明并不会存在。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&#123;</span><br><span class="line">&gt;    <span class="built_in">console</span>.log(bar);<span class="comment">//ReferenceError</span></span><br><span class="line">&gt;    <span class="keyword">let</span> bar = <span class="number">2</span>;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+<p>let是在ES6中引入的除var以外的另一种变量声明方式，let关键字可以将变量绑定到所在的任意作用域中，一般都是在{..}内部。
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">var</span> foo = <span class="literal">true</span>;</span><br><span class="line">&gt;<span class="keyword">if</span>(foo)&#123;</span><br><span class="line">&gt;    &#123;<span class="comment">// 显示的块，如果去掉&#123;&#125;就是隐式绑定了</span></span><br><span class="line">&gt;        <span class="keyword">let</span> bar = foo * <span class="number">2</span>;</span><br><span class="line">&gt;        bar = something(bar);</span><br><span class="line">&gt;        <span class="built_in">console</span>.log(bar);</span><br><span class="line">&gt;    &#125;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;<span class="built_in">console</span>.log(bar);<span class="comment">//ReferenceError</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>还有一点需要注意，使用let进行的声明不会在块级作用域中进行提升，声明的代码被运行之前，声明并不会存在。
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&#123;</span><br><span class="line">&gt;    <span class="built_in">console</span>.log(bar);<span class="comment">//ReferenceError</span></span><br><span class="line">&gt;    <span class="keyword">let</span> bar = <span class="number">2</span>;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <ul>
-<li>const<blockquote>
+<li>const</li>
+</ul>
+<blockquote>
 <p>ES6引入的const也可以用来创建块作用域变量，但其值是常量，不能修改。</p>
 </blockquote>
-<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><h4 id="无处不在的闭包"><a href="#无处不在的闭包" class="headerlink" title="无处不在的闭包"></a>无处不在的闭包</h4>我们初学时可能没有发现，其实我们写的代码中很多都用到了闭包，我看了很多对闭包的定义，大都有些晦涩，有一句话总结的挺好的：闭包就是内部函数总是可以访问其所在的外部函数中声明的参数和变量，即使在其外部函数被返回（寿命终结）之后。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> baz = foo();</span><br><span class="line">baz();<span class="comment">//2</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>观察上述代码，foo函数内定义了一个变量a和一个函数bar，bar()的内部又引用了其外部函数中的变量a，然后foo函数返回bar，在全局作用域中，调用foo()，将返回值给了全局变量baz，而此时foo函数已经执行完毕；我们知道，一般情况下，在foo执行后，引擎的垃圾回收器会将foo的内部作用域销毁，但baz执行以后，依然输出了a的值。其原因在于，当foo函数执行完毕后，其内部函数bar被返回给了baz，baz离不开bar，而bar又离不开a，因此foo()中的作用域存在着bar的引用，也就不会被垃圾回收器回收。<br><br>这里有一个我反复琢磨了一次的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>;i ++)</span><br><span class="line">&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;,i*<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在这里简单说一下setTimeout()的异步机制，JavaScript引擎为单线程，setTimeout()会在延迟时间结束后，并不会立即执行，它会将timer()加入任务队列，等到前面处于等待状态的事件全部处理完，再调用timer()。在上面的代码中，for循环和i*1000是同步的，而timer函数是异步的，所以当timer输出时，for循环已经终止，而此时的i为6，在控制台会以每秒一次的频率输出五次6<br><br>那么如何以每秒一次的频率输出1~5呢？</p>
+<h3>闭包</h3>
+<h4>无处不在的闭包</h4>
+<p>我们初学时可能没有发现，其实我们写的代码中很多都用到了闭包，我看了很多对闭包的定义，大都有些晦涩，有一句话总结的挺好的：闭包就是内部函数总是可以访问其所在的外部函数中声明的参数和变量，即使在其外部函数被返回（寿命终结）之后。
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> baz = foo();</span><br><span class="line">baz();<span class="comment">//2</span></span><br></pre></td></tr></table></figure></p>
+<p>观察上述代码，foo函数内定义了一个变量a和一个函数bar，bar()的内部又引用了其外部函数中的变量a，然后foo函数返回bar，在全局作用域中，调用foo()，将返回值给了全局变量baz，而此时foo函数已经执行完毕；我们知道，一般情况下，在foo执行后，引擎的垃圾回收器会将foo的内部作用域销毁，但baz执行以后，依然输出了a的值。其原因在于，当foo函数执行完毕后，其内部函数bar被返回给了baz，baz离不开bar，而bar又离不开a，因此foo()中的作用域存在着bar的引用，也就不会被垃圾回收器回收。&lt;br&gt;
+这里有一个我反复琢磨了一次的例子：
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>;i ++)</span><br><span class="line">&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;,i*<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在这里简单说一下setTimeout()的异步机制，JavaScript引擎为单线程，setTimeout()会在延迟时间结束后，并不会立即执行，它会将timer()加入任务队列，等到前面处于等待状态的事件全部处理完，再调用timer()。在上面的代码中，for循环和i*1000是同步的，而timer函数是异步的，所以当timer输出时，for循环已经终止，而此时的i为6，在控制台会以每秒一次的频率输出五次6&lt;br&gt;
+那么如何以每秒一次的频率输出1~5呢？</p>
 <ul>
-<li>而根据作用域的工作原理，尽管循环中的五个函数是在各个迭代中分别定义的，但是它们都被封闭在一个共享的全局作用域中，因此实际上只有一个i。所以，在循环的过程中每个迭代都需要一个闭包作用域。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>;i &lt;= <span class="number">5</span>;i ++)</span><br><span class="line">&#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(j);</span><br><span class="line">        &#125;,j*<span class="number">1000</span>);</span><br><span class="line">    &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>而根据作用域的工作原理，尽管循环中的五个函数是在各个迭代中分别定义的，但是它们都被封闭在一个共享的全局作用域中，因此实际上只有一个i。所以，在循环的过程中每个迭代都需要一个闭包作用域。
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>;i &lt;= <span class="number">5</span>;i ++)</span><br><span class="line">&#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(j);</span><br><span class="line">        &#125;,j*<span class="number">1000</span>);</span><br><span class="line">    &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>这里使用了IFEE在每次迭代中创建的作用域封闭起来，并且每次往IFEE中传递当次循环的i，用j来保存每次传进来的i。</p>
-<h4 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h4><p>我们可以使用闭包将变量和函数包装起来，再返回到外部调用，这样实现了变量私有化，又可以在外部访问，<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CoolModule</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> something = <span class="string">"cool"</span>;</span><br><span class="line">    <span class="keyword">var</span> another = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(something);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doAnother</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(another.join(<span class="string">"!"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        doSomething:doSomething,</span><br><span class="line">        doAnother:doAnother</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = coolModule();</span><br><span class="line">foo.doSomething();<span class="comment">//cool</span></span><br><span class="line">foo.doAnother();<span class="comment">//1!2!3</span></span><br></pre></td></tr></table></figure></p>
+<h4>模块化</h4>
+<p>我们可以使用闭包将变量和函数包装起来，再返回到外部调用，这样实现了变量私有化，又可以在外部访问，
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CoolModule</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> something = <span class="string">"cool"</span>;</span><br><span class="line">    <span class="keyword">var</span> another = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(something);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doAnother</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(another.join(<span class="string">"!"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        doSomething:doSomething,</span><br><span class="line">        doAnother:doAnother</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = coolModule();</span><br><span class="line">foo.doSomething();<span class="comment">//cool</span></span><br><span class="line">foo.doAnother();<span class="comment">//1!2!3</span></span><br></pre></td></tr></table></figure></p>
 <p>模块模式需要具备两个必要条件：</p>
 <ol>
 <li>必须有外部的封装函数，该函数必须至少被调用一次（每次调用都会创建一个新的模块实例）；</li>
-<li>封闭函数必须返回至少一个内部函数，这样内部函数才能在私有作用域中形成闭包，并且可以访问或者修改私有的状态。<br>除此之外，也可以使用IFEE写法，省略var foo = coolModule()这一步。</li>
+<li>封闭函数必须返回至少一个内部函数，这样内部函数才能在私有作用域中形成闭包，并且可以访问或者修改私有的状态。
+除此之外，也可以使用IFEE写法，省略var foo = coolModule()这一步。</li>
 </ol>
 
       
@@ -676,7 +704,7 @@
 <span class="post-meta-divider">|</span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共13.3k字</span>
+  <span class="post-count">博客全站共16.7k字</span>
 </div>
 
 <script>

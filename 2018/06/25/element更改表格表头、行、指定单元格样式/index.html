@@ -138,18 +138,18 @@
 
 
 
-<meta name="description" content="在学习vue过程中，总结了一下使用element时更改表格样式的方式。">
+<meta name="description" content="在学习vue过程中，总结了一下使用element时更改表格样式的方式。 &amp;lt;!--more --&amp;gt; 更改表格的样式 使用header-cell-style属性，可为函数或对象&amp;lt;br&amp;gt;  函数写法  12&amp;lt;!-- html --&amp;gt;&amp;lt;el-table :header-cell-style=&quot;rowClass&quot;&amp;gt;&amp;lt;/el-table&amp;gt; 12345">
 <meta name="keywords" content="element,表格,更改样式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="element更改表格表头、行、指定单元格样式">
 <meta property="og:url" content="http://ahrler.xyz/2018/06/25/element更改表格表头、行、指定单元格样式/index.html">
 <meta property="og:site_name" content="AHRL">
-<meta property="og:description" content="在学习vue过程中，总结了一下使用element时更改表格样式的方式。">
+<meta property="og:description" content="在学习vue过程中，总结了一下使用element时更改表格样式的方式。 &amp;lt;!--more --&amp;gt; 更改表格的样式 使用header-cell-style属性，可为函数或对象&amp;lt;br&amp;gt;  函数写法  12&amp;lt;!-- html --&amp;gt;&amp;lt;el-table :header-cell-style=&quot;rowClass&quot;&amp;gt;&amp;lt;/el-table&amp;gt; 12345">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-06-25T10:54:29.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="element更改表格表头、行、指定单元格样式">
-<meta name="twitter:description" content="在学习vue过程中，总结了一下使用element时更改表格样式的方式。">
+<meta name="twitter:description" content="在学习vue过程中，总结了一下使用element时更改表格样式的方式。 &amp;lt;!--more --&amp;gt; 更改表格的样式 使用header-cell-style属性，可为函数或对象&amp;lt;br&amp;gt;  函数写法  12&amp;lt;!-- html --&amp;gt;&amp;lt;el-table :header-cell-style=&quot;rowClass&quot;&amp;gt;&amp;lt;/el-table&amp;gt; 12345">
 
 
 
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  209
+                  211
                 </span>
               
 
@@ -434,26 +434,27 @@
 
       
         <p>在学习vue过程中，总结了一下使用element时更改表格样式的方式。</p>
-<a id="more"></a>
-<h4 id="更改表格的样式"><a href="#更改表格的样式" class="headerlink" title="更改表格的样式"></a>更改表格的样式</h4><p>使用header-cell-style属性，可为函数或对象<br></p>
+<p>&lt;!--more --&gt;</p>
+<h4>更改表格的样式</h4>
+<p>使用header-cell-style属性，可为函数或对象&lt;br&gt;</p>
 <ol>
 <li>函数写法</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:header-cell-style</span>=<span class="string">"rowClass"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在method里面写上方法</span></span><br><span class="line">rowClass(&#123; row, rowIndex&#125;) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(rowIndex) <span class="comment">//表头行标号为0</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'background:red'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:header-cell-style</span>=<span class="string">"rowClass"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在method里面写上方法</span></span><br><span class="line">rowClass(&#123; row, rowIndex&#125;) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(rowIndex) <span class="comment">//表头行标号为0</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'background:red'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <ol start="2">
 <li>对象写法</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:header-cell-style</span>=<span class="string">"&#123;background:'red'&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:header-cell-style</span>=<span class="string">"&#123;background:'red'&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <ol>
 <li>函数写法</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:header-cell-style</span>=<span class="string">"cellStyle"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在method里面写上方法</span></span><br><span class="line">cellStyle(&#123;row, column, rowIndex, columnIndex&#125;)&#123;</span><br><span class="line">    <span class="keyword">if</span>(rowIndex === <span class="number">1</span> &amp;&amp; columnIndex === <span class="number">2</span>)&#123; <span class="comment">//指定坐标</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'background:pink'</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:header-cell-style</span>=<span class="string">"cellStyle"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在method里面写上方法</span></span><br><span class="line">cellStyle(&#123;row, column, rowIndex, columnIndex&#125;)&#123;</span><br><span class="line">    <span class="keyword">if</span>(rowIndex === <span class="number">1</span> &amp;&amp; columnIndex === <span class="number">2</span>)&#123; <span class="comment">//指定坐标</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'background:pink'</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <ol start="2">
 <li>对象写法</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:cell-style</span>=<span class="string">"&#123;background:'pink'&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:cell-style</span>=<span class="string">"&#123;background:'pink'&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>其他设置跟上面的写法基本相同，跟element官网的属性想结合，就可以达到想要的效果。</p>
 
       
@@ -603,7 +604,7 @@
 <span class="post-meta-divider">|</span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共13.3k字</span>
+  <span class="post-count">博客全站共16.7k字</span>
 </div>
 
 <script>
